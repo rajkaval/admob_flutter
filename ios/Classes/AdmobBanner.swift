@@ -98,7 +98,6 @@ class AdmobBanner : NSObject, FlutterPlatformView {
             case "ADAPTIVE_BANNER":
                 return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(frame.width)
             default:
-                assertionFailure("invalid adSize.name")
                 break
             }
         }
