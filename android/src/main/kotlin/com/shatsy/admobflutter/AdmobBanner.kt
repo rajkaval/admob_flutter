@@ -28,7 +28,7 @@ class AdmobBanner(context: Context, messenger: BinaryMessenger, id: Int, args: H
     val adRequestBuilder = AdRequest.Builder()
     val extras = Bundle()
     val npa: Boolean? = args["nonPersonalizedAds"] as Boolean?
-    val hideTestLabel: Boolean? = args["nonPersonalizedAds"] as Boolean?
+    val hideTestLabel: Boolean? = args["hideTestLabel"] as Boolean?
     if(npa == true) {     
       extras.putString("npa", "1")      
     }
