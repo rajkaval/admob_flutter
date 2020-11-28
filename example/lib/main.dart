@@ -281,6 +281,7 @@ class _MyMaterialAppState extends State<MyMaterialApp> {
                               margin: EdgeInsets.only(bottom: 20.0),
                               child: AdmobBanner(
                                 adUnitId: getBannerAdUnitId(),
+                                hideTestLabel: true,
                                 adSize: bannerSize,
                                 listener: (AdmobAdEvent event,
                                     Map<String, dynamic> args) {
