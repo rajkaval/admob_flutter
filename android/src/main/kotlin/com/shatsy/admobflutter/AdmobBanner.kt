@@ -26,13 +26,17 @@ class AdmobBanner(context: Context, messenger: BinaryMessenger, id: Int, args: H
     adView.adUnitId = args["adUnitId"] as String?
 
     val adRequestBuilder = AdRequest.Builder()
+    val extras = Bundle()
     val npa: Boolean? = args["nonPersonalizedAds"] as Boolean?
-    if(npa == true) {
-      val extras = Bundle()
-      extras.putString("npa", "1")
-      adRequestBuilder.addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+    val hideTestLabel: Boolean? = args["nonPersonalizedAds"] as Boolean?
+    if(npa == true) {     
+      extras.putString("npa", "1")      
     }
-
+    if(hideTestLabel == true) {     
+      extras.putString("suppress_test_label", "1")      
+    }
+    if(!extras.isEmpty())
+      adRequestBuilder.addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
     adView.loadAd(adRequestBuilder.build())
   }
 

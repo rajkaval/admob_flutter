@@ -71,12 +71,18 @@ class AdmobBanner : NSObject, FlutterPlatformView {
         }
 
         let request = GADRequest()
+        let extras = GADExtras()
 
         if ((args["nonPersonalizedAds"] as? Bool) == true) {
-            let extras = GADExtras()
-            extras.additionalParameters = ["npa": "1"]
-            request.register(extras)
+            extras.additionalParameters ["npa"] = "1"           
         }
+
+        if ((args["hideTestLabel"] as? Bool) == true) {           
+            extras.additionalParameters ["suppress_test_label"] = "1"           
+        }
+
+        if(extras.additionalParameters.count > 0)
+            request.register(extras)
 
         adView.load(request)
 

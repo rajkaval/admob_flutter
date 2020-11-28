@@ -12,6 +12,7 @@ class AdmobBanner extends StatefulWidget {
   final void Function(AdmobAdEvent, Map<String, dynamic>) listener;
   final void Function(AdmobBannerController) onBannerCreated;
   final bool nonPersonalizedAds;
+  final bool hideTestLabel;
 
   AdmobBanner({
     Key key,
@@ -20,6 +21,7 @@ class AdmobBanner extends StatefulWidget {
     this.listener,
     this.onBannerCreated,
     this.nonPersonalizedAds = false,
+    this.hideTestLabel = false,
   }) : super(key: key);
 
   @override
@@ -79,7 +81,8 @@ class _AdmobBannerState extends State<AdmobBanner> {
           );
         }
 
-        return Text('$defaultTargetPlatform is not yet supported by the plugin');
+        return Text(
+            '$defaultTargetPlatform is not yet supported by the plugin');
       },
     );
   }
@@ -93,8 +96,9 @@ class _AdmobBannerState extends State<AdmobBanner> {
   }
 
   Map<String, dynamic> get bannerCreationParams => <String, dynamic>{
-    'adUnitId': widget.adUnitId,
-    'adSize': widget.adSize.toMap,
-    'nonPersonalizedAds': widget.nonPersonalizedAds,
-  };
+        'adUnitId': widget.adUnitId,
+        'adSize': widget.adSize.toMap,
+        'nonPersonalizedAds': widget.nonPersonalizedAds,
+        'hideTestLabel': widget.hideTestLabel,
+      };
 }
